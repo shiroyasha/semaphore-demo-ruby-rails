@@ -42,6 +42,8 @@ blocks:
       jobs:
         - name: RSpec
           commands:
-            - bundle exec rspec
+            - gem install semaphore_test_boosters
+            - rspec_booster --job $SEMAPHORE_JOB_INDEX/$SEMAPHORE_JOB_COUNT
+          parallelism: 8
     dependencies:
       - Setup
